@@ -5,5 +5,16 @@
 #' @import shiny
 #' @noRd
 app_server <- function(input, output, session) {
-  # Your application server logic
+    
+    # output$resultado <- renderText({paste0("O produto ", 
+    #                                        calc(p1 = input$p1, q1 = input$q1, 
+    #                                             p2 = input$p2, q2 = input$q2), 
+    #                                        " é mais vantajoso.")})
+    resultado_reativo <- eventReactive(input$ok, {
+        paste0("O produto ", 
+               calc(p1 = input$p1, q1 = input$q1, 
+                    p2 = input$p2, q2 = input$q2), 
+               " é mais vantajoso.")
+    })
+output$resultado <- renderText({resultado_reativo()})
 }
