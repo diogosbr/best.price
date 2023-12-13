@@ -10,19 +10,28 @@ app_ui <- function(request) {
         golem_add_external_resources(),
         # Your application UI logic
         fluidPage(
-            titlePanel("best.price", "best.price"),
-            
+            titlePanel("Melhor preço", "best.price"),
             h2("Produto 1"),
-            numericInput("p1", value = NULL, label = "Preço"),
-            numericInput("q1", value = NULL, label = "Quantidade"),
+            fluidRow(
+                column(width = 2,numericInput("p1", value = NULL, label = "Preço", width = "100%")),
+                
+                column(width = 2,numericInput("q1", value = NULL, label = "Quantidade", width = "100%"))
+            ),
             
             h2("Produto 2"),
-            numericInput("p2", value = NULL, label = "Preço"),
-            numericInput("q2", value = NULL, label = "Quantidade"),
+            fluidRow(
+                column(width = 2, numericInput("p2", value = NULL, label = "Preço", width = "100%")),
+                column(width = 2, numericInput("q2", value = NULL, label = "Quantidade", width = "100%"))
+            ),
+            
+            actionButton("ok", "Comparar"),
             
             h2("Resultado"),
-            actionButton("ok", "OK"),
-            tableOutput("resultado")
+            tableOutput("resultado"), 
+            theme = bslib::bs_theme(base_font = bslib::font_google("Kalam", local = TRUE))
+            #theme = bslib::bs_theme(base_font = bslib::font_google("Caveat", local = TRUE))
+            #theme = bslib::bs_theme(base_font = bslib::font_google("Fira Code", local = TRUE))
+            #theme = bslib::bs_theme(base_font = bslib::font_google("Fredoka One", local = TRUE))
         )
     )
 }
