@@ -1,0 +1,10 @@
+name: best_price
+title:
+username: diogosbr
+account: diogosbr
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 10786699
+bundleId: 8042668
+url: https://diogosbr.shinyapps.io/best_price/
+version: 1
