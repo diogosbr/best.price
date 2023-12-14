@@ -11,10 +11,18 @@ calc <- function(p1, q1, p2, q2){
     y <- p2/q2
     z <- which.min(c(x,y))
     
+    best_rt <- c(x,y)[z]
+    worse_rt <- c(x,y)[-z]
+    
+    dif <- worse_rt - best_rt
+    
+    perc <- (dif/best_rt) * 100
+    perc <- round(perc, 1)
+    
     if(any(all((p1 == p2), (q1 == q2)), x==y)){
         msg <- paste0("Não existe diferença entre os produtos.")
     } else {
-        msg <- paste0("O produto ", z, " é mais vantajoso.")
+        msg <- paste0("O produto ", z, " é ", perc,"% mais vantajoso.")
     }
     
     return(msg)
